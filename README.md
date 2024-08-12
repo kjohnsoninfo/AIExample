@@ -14,6 +14,7 @@ This repo contains a basic example of an Unreal Engine 5 level with a companion 
   * [BPI_Companion](#bpi_companion)
  - [Debugging](#debugging)
  - [Additional Features](#additional-features)
+ - [Learning Resources](#learning-resources)
 
 ## Design
 
