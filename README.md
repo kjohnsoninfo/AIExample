@@ -50,3 +50,11 @@ This class allows for the AI character to navigate across the boundaries of the 
 
 ### BPI_Companion
 This interface contains a "Jump to Destination" function that allows for the destination vector in the smart nav link to be utilized in the BP_Companion event graph. In the jump logic, the Launch Character node is triggered when the "Jump to Destination" function is called. It takes in a Suggested Project Velocity with end positions outputted by the "Jump to Destination" function. This is not the most precise method of calculating jump velocity but is adequate for this basic example. 
+
+## Debugging
+Unreal has built in debugging tools for AI. To display debugging information, press the ' key while playing the game. The different debugging modes can be navigated with the number keys. See here for more detailed information: 
+
+To visualize the NavMesh, press the p key while in the editor. This will highlight the level in green where the navmesh is active.
+
+## Additional Features
+This basic example does not implement features such as the perception system and the EQS system which could be used to create more complex AI behaviors. The perception system uses senses such as sight, sound, damage, etc. to determine behavior. The EQS system provides functionality for character awareness of the level environment such as obstacles or items. This could be used in tandem with smart objects to implement behavior useful for a companion AI such as hiding in cover when hearing gunfire.
