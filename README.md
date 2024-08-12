@@ -1,7 +1,23 @@
 # AI Companion Example
 This repo contains a basic example of an Unreal Engine 5 level with a companion AI character that follows the player character.
 
+![FollowDemo.gif](imgs/FollowDemo.gif)
+
+## Table of Contents
+- [Design](#design)
+  * [BP_Companion](#bp_companion)
+  * [AI_Companion](#ai_companion)
+  * [BT_Companion](#bt_companion)
+  * [BB_Companion](#bb_companion)
+  * [BPTask_FollowPlayer](#bptask_followplayer)
+  * [NavLink_Companion](#navlink_companion)
+  * [BPI_Companion](#bpi_companion)
+ - [Debugging](#debugging)
+ - [Additional Features](#additional-features)
+
 ## Design
+
+![AIParts.png](imgs/AIParts.png)
 
 The AI Companion implementation is made up of a several elements which are detailed below:
 
@@ -23,7 +39,7 @@ This class determines the pawn properties for the companion actor in the level. 
 
 For the animation class, I had to make a small adjustment in order to handle an AI character that had no input. This can be achieved by checking if the pawn owner is player controlled. If true, set the return value equal to the original branch return (ground speed + current accleration). If false, set the return value equal to only the ground speed. This will ensure the animation works correctly for the AI character.
 
-
+![animFix.png](imgs/animFix.png)
 
 ### AI_Companion
 This class contains the logic to connect the behavior tree to the companion character. It consists of a single node: Run Behavior Tree which is called on Event BeginPlay (when level is started). The Run Behavior Tree node has an input BTAsset which is set to BT_Companion.
@@ -51,6 +67,8 @@ This class allows for the AI character to navigate across the boundaries of the 
 ### BPI_Companion
 This interface contains a "Jump to Destination" function that allows for the destination vector in the smart nav link to be utilized in the BP_Companion event graph. In the jump logic, the Launch Character node is triggered when the "Jump to Destination" function is called. It takes in a Suggested Project Velocity with end positions outputted by the "Jump to Destination" function. This is not the most precise method of calculating jump velocity but is adequate for this basic example. 
 
+![jumpFn.png](imgs/jumpFn.png)
+
 ## Debugging
 Unreal has built in debugging tools for AI. To display debugging information, press the ' key while playing the game. The different debugging modes can be navigated with the number keys. See here for more detailed information: 
 
@@ -58,3 +76,11 @@ To visualize the NavMesh, press the p key while in the editor. This will highlig
 
 ## Additional Features
 This basic example does not implement features such as the perception system and the EQS system which could be used to create more complex AI behaviors. The perception system uses senses such as sight, sound, damage, etc. to determine behavior. The EQS system provides functionality for character awareness of the level environment such as obstacles or items. This could be used in tandem with smart objects to implement behavior useful for a companion AI such as hiding in cover when hearing gunfire.
+
+## Learning Resources
+* Unreal Engine AI Docs - https://dev.epicgames.com/documentation/en-us/unreal-engine/artificial-intelligence-in-unreal-engine 
+* Unreal Engine AI Presentation – https://www.youtube.com/watch?v=iY1jnFvHgbE 
+* AI Unreal Engine 5 Tutorial (first 4 videos) - https://www.youtube.com/watch?v=bx7taRBjJgM&list=PL4G2bSPE_8uklDwraUCMKHRk2ZiW29R6e&index=3
+* Smart Enemy AI Tutorial - https://www.youtube.com/watch?v=G4GHa-zmQR8 
+
+
